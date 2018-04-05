@@ -4,9 +4,9 @@ NOTE: Do not fork this repository. Instead, create your own repository from scra
 Trello Board: https://trello.com/b/1mJRBCmZ/pet-hotel-weekend-project
 
 PROGRESS:
-- [ ] basic file structure.
-- [ ] 
-- [ ] 
+- [x] basic file structure.
+- [x] pool.js
+- [x] set up server.js and map out routes
 - [ ] 
 - [ ] 
 - [ ] 
