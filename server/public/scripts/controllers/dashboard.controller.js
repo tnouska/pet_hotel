@@ -5,7 +5,7 @@ petApp.controller('DashboardController', ['PetAppService','$mdDialog','$mdToast'
     //dashboard functions
     self.getOwner = PetAppService.getOwner;
     self.postOwner = PetAppService.postOwner;
-
+    self.deleteOwner = PetAppService.deleteOwner;
     //dashboard objects
     self.ownerListArray = PetAppService.ownerListArray;
 

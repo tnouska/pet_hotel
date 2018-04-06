@@ -30,6 +30,17 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
             console.log('error in postOwner.post: ', error);
         });//end $http.post to /dashboard
     };//end post owner function
+
+    self.deleteOwner = function (owner) {
+        ownerId = owner.id;
+        $http.delete(`/dashboard/${ownerId}`).then(function (response) {
+            showToast(owner.first_name + 'was removed.');
+            self.getOwner();
+        }).catch(function (error) {
+            console.log('error in deleteOwner.delete: ',error);
+            showToast('Owner was not removed');
+        });//end $http.delete to /dashboard
+    };//end deleteOwner function
 //end /dashboard functions
 
     self.getHome = function () {

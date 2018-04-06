@@ -4,11 +4,15 @@ petApp.controller('HomeController', ['PetAppService', '$mdDialog', '$mdToast', f
 
     //functions
     self.getHome = PetAppService.getHome;
+    self.getOwner = PetAppService.getOwner;
 
     //objects
     self.statusListArray = PetAppService.statusListArray;
-    console.log(self.statusListArray);
+    self.ownerListArray = PetAppService.ownerListArray;
     
     //called functions when controller loads
     self.getHome();
+    self.getOwner();
+    
+    
 }]);
