@@ -82,8 +82,9 @@ PROGRESS:
 - [x] create sql tables and plan for data...
 - [x] link all controllers to service
 - [x] correctly source all js and css from angular and custom
-- [ ] server side GET routes.
-- [ ] 
+- [x] server side GET routes.
+- [x] client /dashboard post and get routes working
+- [ ] client /manage post and get routes working
 
 ### Next Steps
 

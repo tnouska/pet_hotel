@@ -1,0 +1,39 @@
+<md-card layout-align="start center">
+    <md-card-title>
+        <md-card-title-text>
+            <h3 class="md-headline">ADD NEW GUEST</h1>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <div layout="row">
+            <md-input-container>
+                <label>Name</label>
+                <input type="text" ng-model="newPet.name" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Type</label>
+                <input type="text" ng-model="newPet.type" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Breed</label>
+                <input type="text" ng-model="newPet.breed" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Color</label>
+                <input type="text" ng-model="newPet.color" required>
+            </md-input-container>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="vm.postPets(newPet)">Add Guest</md-button>
+    </md-card-content>
+</md-card>
+<section layout="row" layout-xl="column" layout-wrap>
+    <md-content ng-repeat="pet in vm.petListArray.list">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <h4>{{pet.name}} {{pet.breed}}</h4>
+                </md-card-title-text>
+            </md-card-title>
+        </md-card>
+    </md-content>
+</section>
