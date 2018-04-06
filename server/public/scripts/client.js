@@ -1,4 +1,4 @@
-let petApp = angular.module('PetApp', ['ngRoute','ngMaterial',]);
+let petApp = angular.module('PetApp', ['ngRoute', 'ngMaterial']);
 
 petApp.config(function ($routeProvider) {
     console.log('petApp config loaded');
@@ -21,4 +21,8 @@ petApp.config(function ($routeProvider) {
     .otherwise({
         redirectTo:'/home'
     });
+});
+petApp.config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+    .dark();
 });

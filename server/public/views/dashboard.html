@@ -1,0 +1,24 @@
+<md-card layout-align="start center">
+    <md-card-title>
+        <md-card-title-text>
+            <h3 class="md-headline">ADD NEW OWNER</h1>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <div layout="row">
+            <md-input-container>
+                <label>First Name</label>
+                <input type="text" ng-model="newOwner.first_name" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Last Name</label>
+                <input type="text" ng-model="newOwner.Last_name" required>
+            </md-input-container>
+            <md-input-container>
+                <label>Phone Number</label>
+                <input type="text" ng-model="newOwner.phone_number" required>
+            </md-input-container>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="vm.postOwner(newOwner)">Submit Owner</md-button>
+    </md-card-content>
+</md-card>
