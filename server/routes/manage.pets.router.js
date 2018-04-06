@@ -40,8 +40,8 @@ router.get('/', (req,res)=>{
 });
 router.post('/', (req, res) => {
     let newPet = req.body;
-    const queryText = `INSERT INTO pets (name,type,breed,color)VALUES($1,$2,$3,$4);`;
-    pool.query(queryText, [newPet.name,newPet.type,newPet.breed,newPet.color])
+    const queryText = `INSERT INTO pets (name,owner_id,type,breed,color)VALUES($1,$2,$3,$4,$5);`;
+    pool.query(queryText, [newPet.name,newPet.owner_id,newPet.type,newPet.breed,newPet.color])
         .then((response) => {
             res.sendStatus(201);
         }).catch((error) => {

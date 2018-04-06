@@ -22,6 +22,16 @@
                 <label>Color</label>
                 <input type="text" ng-model="newPet.color" required>
             </md-input-container>
+            <md-input-container>
+                <md-select ng-model="newPet.owner_id" aria-label="searchedOwnerId">
+                    <md-optgroup>
+                        <md-option ng-repeat="owner in vm.ownerListArray.list" ng-value="owner.id" layout-align="center">
+                            <span>{{owner.first_name}} {{owner.last_name}}</span>
+                        </md-option>
+                    </md-optgroup>
+                </md-select>
+                <label>Pet's Owner</label>
+            </md-input-container>
         </div>
         <md-button class="md-raised md-primary" ng-click="vm.postPets(newPet)">Add Guest</md-button>
     </md-card-content>
