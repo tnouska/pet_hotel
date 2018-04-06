@@ -21,5 +21,5 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
             console.log('error in postOwner.post: ', error);
         });//end $http.post to /dashboard
     };//end post owner function
-
+//end /dashboard functions
 }]);
