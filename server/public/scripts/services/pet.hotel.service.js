@@ -34,7 +34,7 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
     self.deleteOwner = function (owner) {
         ownerId = owner.id;
         $http.delete(`/dashboard/${ownerId}`).then(function (response) {
-            showToast(owner.first_name + 'was removed.');
+            showToast(owner.first_name + ' was removed.');
             self.getOwner();
         }).catch(function (error) {
             console.log('error in deleteOwner.delete: ',error);
@@ -52,6 +52,18 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
     };//end getHome function
 
     //end /home functions
+    self.deletePet = function (pet) {
+        petId = pet.id;
+        console.log('petId: ',petId);
+        
+        $http.delete(`/manage/${petId}`).then(function (response) {
+            showToast(pet.name + ' was removed.');
+            self.getPets();
+        }).catch(function (error) {
+            console.log('error in deletePet.delete: ', error);
+            showToast('Pet was not removed');
+        });//end $http.delete to /manage
+    };//end deletePet function
 
     self.getPets = function () {
         $http.get('/manage').then(function (response) {

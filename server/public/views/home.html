@@ -7,9 +7,9 @@
     <md-card-content>
         <div layout="row">
             <md-input-container>
-                <md-select ng-model="searchedOwnerId" ng-change="vm.getStatus(searchedOwnerId)">
+                <md-select ng-model="searchedOwnerId" ng-change="vm.getStatus(searchedOwnerId)" multiple>
                     <md-optgroup>
-                        <md-option ng-value="" layout-align="center"></md-option>
+                        <md-option ng-value="''" layout-align="center"></md-option>
                         <md-option  ng-repeat="owner in vm.ownerListArray.list" ng-value="owner.id" layout-align="center">
                             <span>{{owner.first_name}} {{owner.last_name}}</span> 
                         </md-option>

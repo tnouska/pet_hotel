@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const pool = require('../modules/pool');
 
+router.delete('/:id', (req, res) => {
+    let toBeDeletedPet = req.params;
+    const queryText = 'DELETE FROM pets WHERE id = $1;';
+    pool.query(queryText, [toBeDeletedPet.id]).then((response) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error in home.router.delete: ', error);
+        res.sendStatus(500);
+    });//end pool.query to delete pet
+});//end home.router.delete listener
+
 router.get('/', (req,res)=>{
     let petOwnerId = req.body.id;
     if (petOwnerId !== undefined) {
