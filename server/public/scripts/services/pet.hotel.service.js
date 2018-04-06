@@ -12,6 +12,7 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
     //local functions
     self.ownerListArray = {list: ''};
     self.petListArray = {list: ''};
+    self.statusListArray = {list: ''};
     //creating objects to prevent 2way databinding issue
     self.getOwner = function () {
         $http.get('/dashboard').then(function (response) {
@@ -31,6 +32,16 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
     };//end post owner function
 //end /dashboard functions
 
+    self.getHome = function () {
+        $http.get('/home').then(function (response) {
+            self.statusListArray.list = response.data;
+        }).catch(function (error) {
+            console.log('error in getHome.get: ', error);
+        });//end $http.get to /home
+    };//end getHome function
+
+    //end /home functions
+
     self.getPets = function () {
         $http.get('/manage').then(function (response) {
             self.petListArray.list = response.data;
@@ -47,4 +58,5 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
             console.log('error in postPets.post: ', error);
         });//end $http.post to /manage
     };//end postPet function
+    //end /manage functions
 }]);//end service

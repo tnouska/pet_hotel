@@ -1,5 +1,11 @@
-<div layout="row">
-    <md-card >
-        
-    </md-card>
-</div>
+<section layout="row" layout-xl="column" layout-wrap>
+    <md-content ng-repeat="status in vm.statusListArray.list">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <h4>{{status.name}} </h4>
+                </md-card-title-text>
+            </md-card-title>
+        </md-card>
+    </md-content>
+</section>
