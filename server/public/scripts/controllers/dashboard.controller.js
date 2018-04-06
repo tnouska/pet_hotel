@@ -9,11 +9,6 @@ petApp.controller('DashboardController', ['PetAppService','$mdDialog','$mdToast'
     //dashboard objects
     self.ownerListArray = PetAppService.ownerListArray;
 
-    //home functions
-
-    //home objects
-
-    //manage functions
-
-    //manage objects
+    //called functions when controller loads
+    self.getOwner();
 }]);

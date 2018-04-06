@@ -27,6 +27,16 @@ router.get('/', (req, res) => {
             });
     }
 });
-
+router.post('/',(req,res)=>{
+    let newOwner = req.body;
+    const queryText = `INSERT INTO owner (first_name,last_name,phone_number)VALUES($1,$2,$3);`;
+    pool.query(queryText, [newOwner.first_name, newOwner.last_name, newOwner.phone_number])
+    .then((response)=>{
+        res.sendStatus(201);
+    }).catch((error)=>{
+        console.log('error inside of dashboard.router.post: ', error);
+        res.sendStatus(500);
+    });//end pool.query for dashboard.post
+});// end dashboard.router.post listener
 module.exports = router;
 //end of file
