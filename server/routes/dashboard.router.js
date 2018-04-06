@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const pool = require('../modules/pool');
 
+router.delete('/:id', (req,res)=>{
+    let toBeDeletedOwner = req.params;
+    const queryText = 'DELETE FROM owner WHERE id = $1;';
+    pool.query(queryText, [toBeDeletedOwner.id]).then((response)=>{
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('error in dashboard.router.delete: ', error);
+        res.sendStatus(500);
+    });//end pool.query to delete owner
+});//end dashboard.router.delete listener
+
 router.get('/', (req, res) => {
     let ownerId = req.body.id;
     if (ownerId !== undefined) {
@@ -38,5 +49,6 @@ router.post('/',(req,res)=>{
         res.sendStatus(500);
     });//end pool.query for dashboard.post
 });// end dashboard.router.post listener
+
 module.exports = router;
 //end of file

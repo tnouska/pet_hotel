@@ -12,6 +12,7 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
     //local functions
     self.ownerListArray = {list: ''};
     self.petListArray = {list: ''};
+    self.statusListArray = {list: ''};
     //creating objects to prevent 2way databinding issue
     self.getOwner = function () {
         $http.get('/dashboard').then(function (response) {
@@ -29,7 +30,40 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
             console.log('error in postOwner.post: ', error);
         });//end $http.post to /dashboard
     };//end post owner function
+
+    self.deleteOwner = function (owner) {
+        ownerId = owner.id;
+        $http.delete(`/dashboard/${ownerId}`).then(function (response) {
+            showToast(owner.first_name + ' was removed.');
+            self.getOwner();
+        }).catch(function (error) {
+            console.log('error in deleteOwner.delete: ',error);
+            showToast('Owner was not removed');
+        });//end $http.delete to /dashboard
+    };//end deleteOwner function
 //end /dashboard functions
+
+    self.getHome = function () {
+        $http.get('/home').then(function (response) {
+            self.statusListArray.list = response.data;
+        }).catch(function (error) {
+            console.log('error in getHome.get: ', error);
+        });//end $http.get to /home
+    };//end getHome function
+
+    //end /home functions
+    self.deletePet = function (pet) {
+        petId = pet.id;
+        console.log('petId: ',petId);
+        
+        $http.delete(`/manage/${petId}`).then(function (response) {
+            showToast(pet.name + ' was removed.');
+            self.getPets();
+        }).catch(function (error) {
+            console.log('error in deletePet.delete: ', error);
+            showToast('Pet was not removed');
+        });//end $http.delete to /manage
+    };//end deletePet function
 
     self.getPets = function () {
         $http.get('/manage').then(function (response) {
@@ -47,4 +81,5 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
             console.log('error in postPets.post: ', error);
         });//end $http.post to /manage
     };//end postPet function
+    //end /manage functions
 }]);//end service

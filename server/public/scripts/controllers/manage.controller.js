@@ -5,7 +5,7 @@ petApp.controller('ManageController', ['PetAppService', '$mdDialog', '$mdToast',
     //functions
     self.postPets = PetAppService.postPets;
     self.getPets = PetAppService.getPets;
-
+    self.deletePet = PetAppService.deletePet;
     //objects
     self.petListArray = PetAppService.petListArray;    
     
