@@ -43,13 +43,24 @@ petApp.service('PetAppService', ['$http','$mdToast', function ($http,$mdToast) {
     };//end deleteOwner function
 //end /dashboard functions
 
-    self.getHome = function () {
-        $http.get('/home').then(function (response) {
+    self.getHome = function (ownerId) {        
+        if (ownerId !== undefined) {
+            $http.get(`/home?id=${ownerId}`).then(function (response) {
             self.statusListArray.list = response.data;
         }).catch(function (error) {
             console.log('error in getHome.get: ', error);
-        });//end $http.get to /home
+        });//end $http.get to /home for searching by owner ID
+
+        } else{
+            $http.get('/home').then(function (response) {
+                self.statusListArray.list = response.data;
+            }).catch(function (error) {
+                console.log('error in getHome.get else: ', error);
+            });
+        }
     };//end getHome function
+
+
 
     //end /home functions
     self.deletePet = function (pet) {

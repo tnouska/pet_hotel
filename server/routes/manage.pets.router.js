@@ -13,7 +13,8 @@ router.delete('/:id', (req, res) => {
 });//end home.router.delete listener
 
 router.get('/', (req,res)=>{
-    let petOwnerId = req.body.id;
+    let petOwnerId = req.query.id;
+    
     if (petOwnerId !== undefined) {
         const queryText = `SELECT * FROM pets WHERE owner_id = $1;`;
         pool.query(queryText, [petOwnerId])
@@ -24,7 +25,7 @@ router.get('/', (req,res)=>{
         .catch((err)=>{
             console.log('error in manage.pets.router.get: ', err);
             res.sendStatus(500);
-        });
+        });//end pool.query to get certain
     } else {
         const queryText = `SELECT * FROM pets;`;
         pool.query(queryText)
