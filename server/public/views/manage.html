@@ -41,10 +41,17 @@
         <md-card>
             <md-card-title>
                 <md-card-title-text>
-                    <h4>{{pet.name}} {{pet.breed}}</h4>
-                    <md-button class="md-raised md-warn" ng-click="vm.deletePet(pet)">remove</md-button>
+                    <h4>{{pet.name}}</h4>
                 </md-card-title-text>
             </md-card-title>
+            <md-card-content>
+                <h5>Type: {{pet.type}}</h5>
+            </md-card-content>
+            <md-card-actions>
+                <md-button class="md-raised" ng-click="vm.showPicDialog($event,pet)">test</md-button>
+                <md-button class="md-raised md-warn" ng-click="vm.deletePet(pet)">remove</md-button>
+
+            </md-card-actions>
         </md-card>
     </md-content>
 </section>

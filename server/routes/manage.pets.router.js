@@ -14,7 +14,7 @@ router.delete('/:id', (req, res) => {
 
 router.get('/', (req,res)=>{
     let petOwnerId = req.query.id;
-    
+
     if (petOwnerId !== undefined) {
         const queryText = `SELECT * FROM pets WHERE owner_id = $1;`;
         pool.query(queryText, [petOwnerId])
@@ -50,5 +50,16 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         });//end pool.query for dashboard.post
 });// end dashboard.router.post listener
+router.post('/pics', (req,res)=>{
+    let newPic = req.body;
+    const queryText = `INSERT INTO pictures (pic_url,pet_id,owner_id)VALUES($1,$2,$3);`;
+    pool.query(queryText, [newPic.pic_url,newPic.pet_id,newPic.owner_id])
+    .then((response)=>{
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('error inside of manage.pets.router.post /pics: ', error);
+        res.sendStatus(500);
+    });//end pool.query to post to pictures table
+});//end router.post /pics listener
 module.exports = router;
 //end of file
