@@ -5,6 +5,7 @@ petApp.controller('HomeController', ['PetAppService', '$mdDialog', '$mdToast', f
     //functions
     self.getHome = PetAppService.getHome;
     self.getOwner = PetAppService.getOwner;
+    self.updateStatus = PetAppService.updateStatus;
 
     //objects
     self.statusListArray = PetAppService.statusListArray;

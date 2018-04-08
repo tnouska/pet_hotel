@@ -7,9 +7,9 @@
     <md-card-content>
         <div layout="row">
             <md-input-container>
-                <md-select ng-model="searchedOwnerId" ng-change="vm.getStatus(searchedOwnerId)"  aria-label="searchedOwnerId">
+                <md-select ng-model="searchedOwnerId" ng-change="vm.getHome(searchedOwnerId)"  aria-label="searchedOwnerId">
                     <md-optgroup>
-                        <md-option ng-value="''" layout-align="center"></md-option>
+                        <md-option ng-value="" layout-align="center" default>All Guests</md-option>
                         <md-option  ng-repeat="owner in vm.ownerListArray.list" ng-value="owner.id" layout-align="center">
                             <span>{{owner.first_name}} {{owner.last_name}}</span> 
                         </md-option>
@@ -22,13 +22,17 @@
 </md-card>
 
 <section layout="row" layout-xl="column" layout-wrap>
-    <md-content ng-repeat="status in vm.statusListArray.list">
+    <md-content ng-repeat="petStatus in vm.statusListArray.list" ng-click="vm.showDescription(petStatus)">
         <md-card>
             <md-card-title>
                 <md-card-title-text>
-                    <h4>{{status.name}} </h4>
+                    <h4>{{petStatus.name}} </h4>
                 </md-card-title-text>
             </md-card-title>
+            <md-card-content>
+                <md-button class="md-raised" ng-if="petStatus.checked_in" ng-click="vm.updateStatus(petStatus)">Check Out</md-button>
+                <md-button class="md-raised" ng-hide="petStatus.checked_in" ng-click="vm.updateStatus(petStatus)">Check In</md-button>
+            </md-card-content>
         </md-card>
     </md-content>
 </section>
