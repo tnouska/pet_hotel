@@ -15,7 +15,7 @@ router.delete('/:id', (req,res)=>{
 router.get('/', (req, res) => {
     let ownerId = req.body.id;
     if (ownerId !== undefined) {
-        const queryText = `SELECT owner.first_name, owner.last_name, owner.phone_number, owner.id,count(owner_id) FROM pets JOIN owner ON pets.owner_id = owner.id WHERE owner_id = $1 GROUP BY owner.first_name,owner.last_name,owner.phone_number,owner.id;`;
+        const queryText = `SELECT owner.first_name, owner.last_name, owner.phone_number,owner.id FROM pets,owner WHERE id = $1 GROUP BY owner.first_name,owner.last_name,owner.phone_number,owner.id ;`;
         pool.query(queryText, [ownerId])
             .then((response) => {
                 const responseArray = response.rows;
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
                 res.sendStatus(500);
             });
     } else {
-        const queryText = `SELECT owner.first_name, owner.last_name, owner.phone_number,owner.id,count(owner_id) FROM pets JOIN owner ON pets.owner_id = owner.id GROUP BY owner.first_name,owner.last_name,owner.phone_number,owner.id;`;
+        const queryText = `SELECT owner.first_name, owner.last_name, owner.phone_number,owner.id FROM pets,owner GROUP BY owner.first_name,owner.last_name,owner.phone_number,owner.id ;`;
         pool.query(queryText)
             .then((response) => {
                 const responseArray = response.rows;

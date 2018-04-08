@@ -9,7 +9,9 @@
             <md-input-container>
                 <md-select ng-model="searchedOwnerId" ng-change="vm.getHome(searchedOwnerId)"  aria-label="searchedOwnerId">
                     <md-optgroup>
-                        <md-option ng-value="" layout-align="center" default>All Guests</md-option>
+                        <md-select-header>
+                            <md-option ng-value="" layout-align="center" default>All Guests</md-option>
+                        </md-select-header>
                         <md-option  ng-repeat="owner in vm.ownerListArray.list" ng-value="owner.id" layout-align="center">
                             <span>{{owner.first_name}} {{owner.last_name}}</span> 
                         </md-option>
