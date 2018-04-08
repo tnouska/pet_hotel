@@ -59,17 +59,15 @@ petApp.service('PetAppService', ['$http','$mdToast','$mdDialog', function ($http
             });
         }
     };//end getHome function
-    self.updateStatus = function (pet) {
-        console.log('pet in updatestatus: ', pet);
-        
+    self.updateStatus = function (pet) {        
         $http.put(`/home/${pet.id}`, pet).then(function (response) {
             showToast(`${pet.name} status changed.`);
             self.getHome();
         }).catch((function (error) {
             console.log('error in updateStatus: ', error);
             showToast(`${pet.name} status has not been updated.`);
-        }))
-    }
+        }));//end $http.put to update status in /home
+    };//end updateStatus function
     //end /home functions
     self.postPic = function (pic) {
         $http.post('/manage/pics',pic).then(function (response) {
