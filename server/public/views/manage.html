@@ -46,10 +46,16 @@
             </md-card-title>
             <md-card-content>
                 <h5>Type: {{pet.type}}</h5>
+                <h5>Breed: {{pet.breed}}</h5>
+                <h5>Color: {{pet.color}}</h5>
+                <h5 ng-show="{{pet.checked_in}}">Pet is in house.</h5>
+                <h5 ng-hide="{{pet.checked_in}}">Pet is not here.</h5>
+                <!-- <img src="{{pet.pic_url}}" alt=""> was not able to get this to work while
+                 tying sourcing pictures to a different table.-->
             </md-card-content>
             <md-card-actions>
-                <md-button class="md-raised" ng-click="vm.showPicDialog($event,pet)">test</md-button>
-                <md-button class="md-raised md-warn" ng-click="vm.deletePet(pet)">remove</md-button>
+                <md-button class="md-raised" ng-click="vm.showPicDialog($event,pet)">Add Pic URL</md-button>
+                <md-button class="md-raised md-warn" ng-click="vm.deletePet(pet)">Remove</md-button>
 
             </md-card-actions>
         </md-card>

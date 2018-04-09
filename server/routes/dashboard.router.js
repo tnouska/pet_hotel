@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
             .catch((err) => {
                 console.log('error in dashboard.router.get: ', err);
                 res.sendStatus(500);
-            });
+            });//end pool.query
     }
 });
 router.post('/',(req,res)=>{

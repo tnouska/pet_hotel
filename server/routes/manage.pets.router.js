@@ -36,9 +36,9 @@ router.get('/', (req,res)=>{
             .catch((err) => {
                 console.log('error in manage.pets.router.get: ', err);
                 res.sendStatus(500);
-            });
-    }
-});
+            });//end pool.query to get all pets
+    }//end if/else
+});//end router.get 
 router.post('/', (req, res) => {
     let newPet = req.body;
     const queryText = `INSERT INTO pets (name,owner_id,type,breed,color)VALUES($1,$2,$3,$4,$5);`;
