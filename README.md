@@ -64,11 +64,9 @@ CREATE TABLE pictures(
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+![Add Entry Page](screenshot1.png)
 
-## Documentation
-
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
+![Add Entry Page](screenshot2.png)
 
 ### Completed Features
 
@@ -96,7 +94,7 @@ Features that you would like to add at some point in the future.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+https://mysterious-inlet-12479.herokuapp.com/#!/home
 
 ## Authors
 
