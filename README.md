@@ -99,8 +99,3 @@ https://mysterious-inlet-12479.herokuapp.com/#!/home
 ## Authors
 
 * Teagan Nouska
-
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
