@@ -39,12 +39,12 @@ DATABASE NAME: pet_hotel
 ```sql
 CREATE TABLE pets(
 	id SERIAL PRIMARY KEY,
-	owner_id INT REFERENCES "owner",
+	owner_id INT REFERENCES "owner" ON DELETE CASCADE,
 	name varchar(255),
 	type varchar(255),
 	breed varchar(255),
 	color varchar(255),
-	checked_in boolean
+	checked_in boolean DEFAULT true
 	);
 	
 CREATE TABLE owner(
@@ -57,9 +57,8 @@ CREATE TABLE owner(
 CREATE TABLE pictures(
     id SERIAL PRIMARY KEY,
     pic_url varchar(255),
-    pet_id INT REFERENCES "pets",
-    owner_id INT REFERENCES "owner"
-);
+    pet_id INT REFERENCES "pets"  ON DELETE CASCADE,
+    owner_id INT REFERENCES "owner"  ON DELETE CASCADE
 );
 ```
 
@@ -84,15 +83,15 @@ PROGRESS:
 - [x] correctly source all js and css from angular and custom
 - [x] server side GET routes.
 - [x] client /dashboard post and get routes working
-- [ ] client /manage post and get routes working
+- [x] client /manage post and get routes working
 
 ### Next Steps
 
 Features that you would like to add at some point in the future.
 
-- [ ] Angular Material for design
+- [x] Angular Material for design
 - [ ] Keep track of visits (you may need another table or two for this)
-- [ ] Add images for pets
+- [/] Add images for pets -- was only able to upload picture url but not pull it from the table with other relevant data.
 - [ ] Update pets and owners
 
 ## Deployment
