@@ -4,7 +4,7 @@ const app = express();
 //sets the app variable to the executed function of the express variable we just made.
 const bodyParser = require('body-parser');
 //sets the variable for bodyParser to the body-parser that we installed with npm.
-let port = process.env.PORT || 5000;
+let port = process.env.PORT || 5002;
 //sets the variable port to either whatever heroku uses or 5000.
 const homeRouter = require('./routes/home.router');
 //sets the homeRouter equal to the router we exported inside of home.router
